@@ -1,0 +1,38 @@
+<!--Nav-bar-->
+<app-nav-bar></app-nav-bar>
+<!--body-->
+<div class="container">
+  <div class="well">
+<div class="jumbotron" >
+  <h3 class="display-6">My Tickets</h3>
+</div>
+  </div>
+
+<div class="card" style="width: 1110px; " >
+  <p class="" style="align-self: flex-end; margin: 20px;" ><button class="btn btn-danger" type="submit" [routerLink]="['/app-ticket-form']">New Ticket</button></p>
+  <table class="table">
+    <thead class="thead-light">
+       <tr>
+         <th>Ticket Id</th>
+         <th>Summary</th>
+         <th>Complaint Type</th>
+         <th>Actions</th>
+       </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tckt of service.list">
+        <td [routerLink]="['/app-ticket-detail', tckt.ticketId]">{{tckt.ticketId}}</td>
+        <td [routerLink]="['/app-ticket-detail', tckt.ticketId]">{{tckt.summary}}</td>
+        <td [routerLink]="['/app-ticket-detail', tckt.ticketId]">{{tckt.complaintType}}</td>
+        <td>
+          <i class="fa fa-edit fa-lg "(click)="populateForm(tckt)" routerLink="/app-ticket-form"></i>
+          <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(tckt.ticketId)"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+
+

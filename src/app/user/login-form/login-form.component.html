@@ -1,0 +1,26 @@
+<div class="container card">
+
+<div class="jumbotron py-3" >
+  <h5 class="display-6 mce-text-center">Login</h5>
+</div>
+<form #form= "ngForm" (submit)="onSubmit(form)">
+  <div class="form-group">
+    <input type="text" ngModel required #userName="ngModel" [(ngModel)]="service.userData.userName" name="userName"
+    class="form-control" placeholder="User Name" id="loginUserName">
+  </div>
+
+  <div class="form-group mt-2">
+    <input type="password" ngModel required #password="ngModel" [(ngModel)]="service.userData.password" name="password"
+    class="form-control" placeholder="Password" id="loginPassword">
+  </div>
+
+  <div class="form-group mt-2 text-center">
+    <button class="btn btn-info btn-block" type="submit" [disabled]="form.invalid">login</button>
+  </div>
+
+</form>
+
+<div class="login-help mt-5">
+  <p style="font-size: small;"><a routerLink="/forgot-password">Forgot your password?</a><span></span><a routerLink="/app-register-form">Create an account</a></p>
+</div>
+</div>

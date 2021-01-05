@@ -1,0 +1,47 @@
+<app-nav-bar></app-nav-bar>
+<div class="container card">
+<div class="jumbotron py-3" >
+  <h1 class="display-4 mce-text-center">Create Ticket</h1>
+</div>
+<form #form= "ngForm" (submit)="onSubmit(form)">
+  <input type="hidden" name="ticketId"
+  [value]="service.formData.ticketId"/>
+  <input type="hidden" name="userId"
+  [value]="service.formData.userId"/>
+  <input type="hidden" name="commentId"
+  [value]="service.formData.commentId"/>
+  <div class="form-group">
+    <label>Summary</label>
+    <input type="text" class="form-control" placeholder="Summary"
+    name="summary" #summary="ngModel" [(ngModel)]="service.formData.summary"
+    required [class.invalid]="summary.invalid&&summary.touched">
+  </div>
+  <div class="form-group">
+    <label>Desciption</label>
+
+    <textarea class = "form-control" rows = "3" placeholder = "Description"
+    name="description" #description="ngModel" [(ngModel)]="service.formData.description"
+    required [class.invalid]="description.invalid&&description.touched"></textarea>
+  </div>
+  <div class="form-group">
+    <label>Complaint Type</label>
+    <!--<input type="text" class="form-control" placeholder="Complaint Type"
+    name="complaintType" #summary="ngModel" [(ngModel)]="service.formData.complaintType"
+    required>-->
+    <div class="dropdown">
+      <select name="complaint type"  #complaintType [(ngModel)]="service.formData.complaintType" >
+      <option value="" selected disabled hidden>-select-</option>
+      <option value="Physical damage">Physical damage</option>
+      <option value="Battery issue">Battery issue</option>
+      <option value="Software complaint">Software complaint</option>
+      <option value="Others">Others</option>
+    </select>
+    </div>
+  </div>
+  <div class="form-group"><p class="text-end">
+    <button class="btn btn-secondary mt-3" style="margin-right: 10px;" type="submit" (click)="cancel(form)" routerLink="/ticket">Cancel</button>
+    <button class="btn btn-info mt-3" type="submit" [disabled]="form.invalid" >Submit</button>
+   </p>
+  </div>
+</form>
+</div>
